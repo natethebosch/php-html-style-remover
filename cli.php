@@ -3,12 +3,12 @@
  * @Author: Nate Bosscher (c) 2015
  * @Date:   2016-03-24 12:19:14
  * @Last Modified by:   Nate Bosscher
- * @Last Modified time: 2016-03-24 13:02:29
+ * @Last Modified time: 2016-03-24 13:09:58
  */
 
 namespace BlueGiraffeSystems;
 
-require_once __DIR__ . "/sanitizer.php";
+require_once __DIR__ . "/src/sanitizer.php";
 
 echo "PHP HTML Style Sanitizer 1.0\n";
 echo "by Nate Bosscher 2016\n";
