@@ -3,7 +3,7 @@
  * @Author: Nate Bosscher (c) 2015
  * @Date:   2016-03-24 12:19:14
  * @Last Modified by:   Nate Bosscher
- * @Last Modified time: 2016-03-24 13:09:58
+ * @Last Modified time: 2016-03-24 13:13:18
  */
 
 namespace BlueGiraffeSystems;
@@ -47,17 +47,15 @@ for(;;){
 		echo "ERROR: Content was not HTML\n";
 	}else{
 
-		// remove html extras from textutil
-		$contents = substr($contents, strpos($contents, "<body>") + strlen("<body>"));
-		$contents = substr($contents, 0, strpos($contents, "</body>"));
-
 		// write results to tmp file
 		$handle = fopen($tmpfname, "w");
 		fwrite($handle, Sanitizer::htmlRemoveStyle($contents));
 		fclose($handle);
 
+		exec("textutil -convert rtf -output $tmpfname $tmpfname");
+
 		// write results to clipboard
-		exec("echo $tmpfname | pbcopy");
+		exec("cat $tmpfname | pbcopy --prefer rtf");
 
 		echo "SUCCESS\n";
 	}
